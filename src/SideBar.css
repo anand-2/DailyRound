@@ -1,0 +1,40 @@
+.sideBar_main{
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+}
+
+.sideBar_heading {
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+.sideBar_subHeading {
+    color: #a79b9b;
+    font-size: 15px;
+    margin-bottom: 20px;
+}
+
+.sideBar_priority_checkbox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+}
+
+.filled {
+    color: white;
+    border: 1px solid white;
+ }
+ 
+.outlined {
+    background-color: #a79b9b;
+    color: black;
+    border: 1px solid black;
+}
+
+.sideBar_tag_chip {
+    display: flex;
+    flex-flow: wrap;
+    gap: 10px;
+}

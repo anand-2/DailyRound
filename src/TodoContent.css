@@ -1,0 +1,71 @@
+.todoContent_main {
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.todoContent_card {
+    background-color: #ffffff;
+    height: 50px;
+    border-radius: 10px;
+    align-content: center;
+    padding: 0 10px;
+    border: 1px solid #EDECEC;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.todo_add_button {
+    font-family: 'Poppins' !important;
+    text-transform: capitalize !important;
+    width: 120px;
+    align-self:self-end;
+    background-color: #1976d2 !important; 
+}
+
+.searchSection{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.searchInput{
+    height: 36.5px;
+    width: 500px;
+    padding: 0px;
+    background-color: #ffffff;
+}
+
+.css-2u11ia-MuiInputBase-input-MuiOutlinedInput-input {
+    padding: 6px 10px 6px 0 !important;
+}
+
+.dialog_tags:first-child .dialog_tags_chip{
+    margin-left: 0px;
+}
+
+.dialog_tags_section{
+    margin-top: 15px;
+    color: #666666;
+    font-size: 15px !important;
+}
+
+.todo_editButton{
+    cursor: pointer;
+    width:21px!important;
+    height: 21px!important;
+}
+
+.todo_deleteButton{
+    cursor: pointer;
+    width: 21px !important;
+    height: 21px !important;
+}
+
+.todo_noteButton{
+    cursor: pointer;
+    width: 21px !important;
+    height: 21px !important;
+}
