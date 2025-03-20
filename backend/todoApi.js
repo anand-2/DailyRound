@@ -1,16 +1,18 @@
 import express from 'express';
 import pg from 'pg';
+import dotenv from 'dotenv';
 
+dotenv.config();
 const router = express.Router();
 const { Client } = pg;
 
 // Database Connection Config
 const client = new Client({
-    database:'todoList',
-    host:'localhost',
-    port:5432,
-    password:'postgres',
-    user:'postgres'
+  database: process.env.DB_NAME || 'todoList',
+  host: process.env.DB_HOST || 'localhost',
+  port: process.env.DB_PORT || 5432,
+  password: process.env.DB_PASSWORD || 'postgres',
+  user: process.env.DB_USER || 'postgres'
 });
 
 client.connect().then(() => console.log("Connected to PostgreSQL")).catch(err => console.error("Database connection error:", err));

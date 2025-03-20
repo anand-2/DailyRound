@@ -266,188 +266,196 @@ function TodoContent(props) {
   };
 
   return (
-    <div className="todoContent_main">
-      <div className="searchSection">
-        <OutlinedInput startAdornment={(<InputAdornment position="start"><SearchIcon /></InputAdornment>)} onChange={handleSearch} className="searchInput" placeholder="Search todo" />
-        <Button className="todo_add_button" variant="contained" onClick={handleAddTodos}>Add Todo</Button>
-      </div>
-      <div className="todoContent_card_section">
-        {paginatedData.length > 0 && paginatedData?.map((item,i) => (
-          <div key={i} className="todoContent_card" style={item.complete_status ? {pointerEvents:'none',backgroundColor:'#eeeeee',border:'0.5px solid #ccc'} : {}} onClick={()=>handleTaskPopUp(item)}>
-            <div style={{alignItems:'center',display:'flex'}}>
-              <Checkbox
-                sx={{ padding: "2px", height: "20px", width: "20px", marginRight: "15px",pointerEvents: item.complete_status ? 'auto' : ''  }}
-                icon={<CheckBoxOutlineBlankIcon sx={{ color: "#a79b9b" }} />}
-                checkedIcon={<CheckBoxIcon sx={{ color: "#80b156" }} />}
-                checked={item.complete_status}
-                onClick={(event)=>event.stopPropagation()}
-                onChange={() => handleCheckboxChange(item)}
-              />
-               <div style={item.complete_status ? {textDecoration:'line-through'} : {}} >{item.title}</div>
-              {item?.tags ?.map((tagName, index) => (
-                <div key={index} style={{display:'inline'}}>
-                  <Chip                
-                    label={tagName}
-                    sx={{
-                      backgroundColor:'#01579b ',
-                      border:"1px solid #01579b",
-                      "&:hover": {
-                        backgroundColor: "#0277bd !important", 
-                      },
-                      height: "21px",
-                      fontSize: "10px",
-                      color: "white",
-                      marginLeft: "10px",
-                    }}
-                  />              
-                </div>
-              ))}
-              <Chip
-                label={item.priority}
-                sx={{
-                  backgroundColor: "#e57373",
-                  border: '1px solid #e57373',
-                  height: "21px",
-                  fontSize: "10px",
-                  color: "white",
-                  marginLeft: "10px",
-                }}
-              />
-            </div>     
-            <div style={{alignItems:'center',display:'flex',gap:'10px'}}>
-              <NoteAddIcon onClick={(event)=>handleAddingNote(event,item)} className="todo_noteButton" sx={{color:'grey'}}></NoteAddIcon>
-              <EditIcon onClick={(event)=>{handleEditTodos(event,item)}} className="todo_editButton" sx={{color:'grey'}}></EditIcon>
-              <DeleteIcon onClick={(event)=>handleDeleteTodos(event,item)} className="todo_editButton" sx={{color:'#d32f2f'}}></DeleteIcon> 
-            </div>     
-          </div>
-        ))}
-        <Pagination
-          count={Math.ceil(filteredResult.length / rowsPerPage)}
-          page={page}
-          onChange={handleChangePage}
-          color="primary"
-          sx={{ marginTop: "20px", display: "flex", justifyContent: "center" }}
-        />
-      </div>
+    <>
+      {paginatedData.length > 0 ?
+      <div className="todoContent_main">
+        <div className="searchSection">
+          <OutlinedInput startAdornment={(<InputAdornment position="start"><SearchIcon /></InputAdornment>)} onChange={handleSearch} className="searchInput" placeholder="Search todo" />
+          <Button className="todo_add_button" variant="contained" onClick={handleAddTodos}>Add Todo</Button>
+        </div>
+        <div className="todoContent_card_section">
+          {paginatedData.length > 0 && paginatedData?.map((item,i) => (
+            <div key={i} className="todoContent_card" style={item.complete_status ? {pointerEvents:'none',backgroundColor:'#eeeeee',border:'0.5px solid #ccc'} : {}} onClick={()=>handleTaskPopUp(item)}>
+              <div style={{alignItems:'center',display:'flex'}}>
+                <Checkbox
+                  sx={{ padding: "2px", height: "20px", width: "20px", marginRight: "15px",pointerEvents: item.complete_status ? 'auto' : ''  }}
+                  icon={<CheckBoxOutlineBlankIcon sx={{ color: "#a79b9b" }} />}
+                  checkedIcon={<CheckBoxIcon sx={{ color: "#80b156" }} />}
+                  checked={item.complete_status}
+                  onClick={(event)=>event.stopPropagation()}
+                  onChange={() => handleCheckboxChange(item)}
+                />
+                <div style={item.complete_status ? {textDecoration:'line-through'} : {}} >{item.title}</div>
+                {item?.tags ?.map((tagName, index) => (
+                  <div key={index} style={{display:'inline'}}>
+                    <Chip                
+                      label={tagName}
+                      sx={{
+                        backgroundColor:'#01579b ',
+                        border:"1px solid #01579b",
+                        "&:hover": {
+                          backgroundColor: "#0277bd !important", 
+                        },
+                        height: "21px",
+                        fontSize: "10px",
+                        color: "white",
+                        marginLeft: "10px",
+                      }}
+                    />              
+                  </div>
+                ))}
+                <Chip
+                  label={item.priority}
+                  sx={{
+                    backgroundColor: "#e57373",
+                    border: '1px solid #e57373',
+                    height: "21px",
+                    fontSize: "10px",
+                    color: "white",
+                    marginLeft: "10px",
+                  }}
+                />
+              </div>     
+              <div style={{alignItems:'center',display:'flex',gap:'10px'}}>
+                <NoteAddIcon onClick={(event)=>handleAddingNote(event,item)} className="todo_noteButton" sx={{color:'grey'}}></NoteAddIcon>
+                <EditIcon onClick={(event)=>{handleEditTodos(event,item)}} className="todo_editButton" sx={{color:'grey'}}></EditIcon>
+                <DeleteIcon onClick={(event)=>handleDeleteTodos(event,item)} className="todo_editButton" sx={{color:'#d32f2f'}}></DeleteIcon> 
+              </div>     
+            </div>
+          ))}
+          <Pagination
+            count={Math.ceil(filteredResult.length / rowsPerPage)}
+            page={page}
+            onChange={handleChangePage}
+            color="primary"
+            sx={{ marginTop: "20px", display: "flex", justifyContent: "center" }}
+          />
+        </div>
 
-      <Dialog open={open} onClose={handleClose}>
-        <DialogTitle sx={{fontFamily:'Poppins !important'}}>{dialogHeading}</DialogTitle>
-        <DialogContent>
-          <DialogContentText>
-          Enter the details for your new task below. Make sure to set a title, priority, and tags to keep your work organized.
-          </DialogContentText>
+        <Dialog open={open} onClose={handleClose}>
+          <DialogTitle sx={{fontFamily:'Poppins !important'}}>{dialogHeading}</DialogTitle>
+          <DialogContent>
+            <DialogContentText>
+            Enter the details for your new task below. Make sure to set a title, priority, and tags to keep your work organized.
+            </DialogContentText>
+              <TextField
+                autoFocus        
+                required    
+                margin="dense"
+                id="title"
+                name="title"
+                label="Title"
+                type="text"
+                fullWidth
+                size="small"
+                variant="outlined"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+              />     
             <TextField
-              autoFocus        
-              required    
               margin="dense"
-              id="title"
-              name="title"
-              label="Title"
+              id="desc"
+              name="desc"
+              label="Description"
               type="text"
               fullWidth
               size="small"
               variant="outlined"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-            />     
-          <TextField
-            margin="dense"
-            id="desc"
-            name="desc"
-            label="Description"
-            type="text"
-            fullWidth
-            size="small"
-            variant="outlined"
-            value={desc}
-            onChange={(e) => setDesc(e.target.value)}
-          />
-          <FormControl required sx={{marginTop:'8px'}} size="small" fullWidth>
-            <Select
-              required
-              labelId="priority-label"
-              id="demo-select-small"
-              value={newPriority}
-              displayEmpty
-              onChange={setNewPriorityFunction}
-            >
-              <MenuItem value="" disabled>
-                Select Priority
-              </MenuItem>
-              <MenuItem value="High">High</MenuItem>
-              <MenuItem value="Medium">Medium</MenuItem>
-              <MenuItem value="Low">Low</MenuItem>
-            </Select>
-          </FormControl>
-          <div className="dialog_tags_section">
-            <Typography>Select suitable tags*</Typography>
-            {tags.map((tagName, index) => (
-                <Chip            
-                  onClick={() => handleTagChange(index)}    
-                  label={tagName.name} 
-                  sx={{
-                    border: '1px solid grey',
-                    height: "21px",
-                    fontSize: "10px",
-                    color: "black",
-                    marginTop: '5px',
-                    marginLeft: index === 0 ? "0px" : "10px",
-                    backgroundColor: selectedTags.includes(index) ? tagName.color : "white !important",
-                    "&:hover": {
-                      backgroundColor: selectedTags.includes(index) ? tagName.color : "#6b7f88 !important", // Slightly darker hover effect
-                    }
-                  }}
-                />              
-            ))}
-          </div>
-        </DialogContent>
-        <DialogActions>
-          <Button type="submit" onClick={dialogHeading === 'Add Todo' ? handleAddTodoSubmit : handleEditTodoSubmit}>Submit</Button>
-        </DialogActions>
-      </Dialog>
-
-      <Dialog open={notesOpen} onClose={handleNotesClose}>
-        <DialogTitle  sx={{fontFamily:'Poppins !important'}}>Add Note</DialogTitle>
-        <DialogContent>          
-          <Textarea
-            margin="dense"
-            id="note"
-            name="note"
-            label="Note"
-            type="text"
-            placeholder="Write your thoughts here..."
-            fullWidth
-            size="lg"
-            sx={{ minWidth: '400px',minHeight:'200px' }}
-            color="neutral"
-            variant="outlined"
-            value={noteInput}
-            onChange={(e) => setNoteInput(e.target.value)}
-          />     
-        </DialogContent>
-        <DialogActions>
-          <Button type="submit" onClick={()=>{handleAddNewNoteSubmit()}}>Submit</Button>
-        </DialogActions>
-      </Dialog>
-
-      <Dialog fullWidth maxWidth="sm" sx={{"& .MuiDialog-paper": {minHeight: "200px",maxHeight:'90vh'}}} open={taskOpen} onClose={handleTaskClose}>
-        <div className="taskTitleSection">
-          <div className="taskTitle">{openedTask?.title}</div>            
-          <div className="taskPriority">Priority : {openedTask?.priority}</div>
-        </div>
-        <div className="taskBodySection">  
-          <div>
-            <div className="taskDescription">{openedTask?.desciption}</div>  
-            <div className="notesSection">
-              <div className="notesHeading">Notes</div>  
-              {openedTask?.notes.map((item, index) => (
-                <div className="notesItem" key={index}>{item}</div>
+              value={desc}
+              onChange={(e) => setDesc(e.target.value)}
+            />
+            <FormControl required sx={{marginTop:'8px'}} size="small" fullWidth>
+              <Select
+                required
+                labelId="priority-label"
+                id="demo-select-small"
+                value={newPriority}
+                displayEmpty
+                onChange={setNewPriorityFunction}
+              >
+                <MenuItem value="" disabled>
+                  Select Priority
+                </MenuItem>
+                <MenuItem value="High">High</MenuItem>
+                <MenuItem value="Medium">Medium</MenuItem>
+                <MenuItem value="Low">Low</MenuItem>
+              </Select>
+            </FormControl>
+            <div className="dialog_tags_section">
+              <Typography>Select suitable tags*</Typography>
+              {tags.map((tagName, index) => (
+                  <Chip            
+                    onClick={() => handleTagChange(index)}    
+                    label={tagName.name} 
+                    sx={{
+                      border: '1px solid grey',
+                      height: "21px",
+                      fontSize: "10px",
+                      color: "black",
+                      marginTop: '5px',
+                      marginLeft: index === 0 ? "0px" : "10px",
+                      backgroundColor: selectedTags.includes(index) ? tagName.color : "white !important",
+                      "&:hover": {
+                        backgroundColor: selectedTags.includes(index) ? tagName.color : "#6b7f88 !important", // Slightly darker hover effect
+                      }
+                    }}
+                  />              
               ))}
-            </div>  
+            </div>
+          </DialogContent>
+          <DialogActions>
+            <Button type="submit" onClick={dialogHeading === 'Add Todo' ? handleAddTodoSubmit : handleEditTodoSubmit}>Submit</Button>
+          </DialogActions>
+        </Dialog>
+
+        <Dialog open={notesOpen} onClose={handleNotesClose}>
+          <DialogTitle  sx={{fontFamily:'Poppins !important'}}>Add Note</DialogTitle>
+          <DialogContent>          
+            <Textarea
+              margin="dense"
+              id="note"
+              name="note"
+              label="Note"
+              type="text"
+              placeholder="Write your thoughts here..."
+              fullWidth
+              size="lg"
+              sx={{ minWidth: '400px',minHeight:'200px' }}
+              color="neutral"
+              variant="outlined"
+              value={noteInput}
+              onChange={(e) => setNoteInput(e.target.value)}
+            />     
+          </DialogContent>
+          <DialogActions>
+            <Button type="submit" onClick={()=>{handleAddNewNoteSubmit()}}>Submit</Button>
+          </DialogActions>
+        </Dialog>
+
+        <Dialog fullWidth maxWidth="sm" sx={{"& .MuiDialog-paper": {minHeight: "200px",maxHeight:'90vh'}}} open={taskOpen} onClose={handleTaskClose}>
+          <div className="taskTitleSection">
+            <div className="taskTitle">{openedTask?.title}</div>            
+            <div className="taskPriority">Priority : {openedTask?.priority}</div>
           </div>
-        </div>
-      </Dialog>
-    </div>
+          <div className="taskBodySection">  
+            <div>
+              <div className="taskDescription">{openedTask?.desciption}</div>  
+              <div className="notesSection">
+                <div className="notesHeading">Notes</div>  
+                {openedTask?.notes.map((item, index) => (
+                  <div className="notesItem" key={index}>{item}</div>
+                ))}
+              </div>  
+            </div>
+          </div>
+        </Dialog>
+      </div> : 
+      <div style={{display:"flex",justifyContent:'center',flexDirection:'column',gap:'20px',alignItems:'center'}}>
+        <img style={{width:'390px',height:'300px'}} src="/noData.jpg" alt="" />
+        No Data found for this User
+      </div>
+      } 
+    </>
   );
 }
 
