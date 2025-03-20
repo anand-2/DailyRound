@@ -15,7 +15,7 @@ function App() {
   },[])
   return (
     <>
-     <NavBar userList={userList} currentUser={currentUser} setUsersList={setUsersList}></NavBar>
+     <NavBar userList={userList} setCurrentUser={setCurrentUser} currentUser={currentUser} setUsersList={setUsersList}></NavBar>
      <TodoBody userList={userList} currentUser={currentUser}></TodoBody>
     </>
   );

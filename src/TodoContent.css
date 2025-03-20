@@ -1,18 +1,27 @@
 .todoContent_main {
-    margin: 20px;
+    margin: 20px 20px 0 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.todoContent_card_section {
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
 
 .todoContent_card {
-    background-color: #ffffff;
+    background-color: #d0ecf7;
+    color: #333333;
     height: 50px;
     border-radius: 10px;
+    border:'0.5px solid #ccc';
     align-content: center;
     padding: 0 10px;
     border: 1px solid #EDECEC;
     display: flex;
+    cursor: pointer;
     justify-content: space-between;
     align-items: center;
 }
@@ -22,7 +31,7 @@
     text-transform: capitalize !important;
     width: 120px;
     align-self:self-end;
-    background-color: #1976d2 !important; 
+    background-color: #01579b !important; 
 }
 
 .searchSection{
@@ -68,4 +77,42 @@
     cursor: pointer;
     width: 21px !important;
     height: 21px !important;
+}
+
+.taskDescription {
+    color: #666666;
+    font-size: 15px;    
+}
+
+.taskTitleSection{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    padding-bottom: 10px;
+}
+
+.taskBodySection{
+    padding: 0 20px 20px 20px;
+}
+
+.taskTitle{
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.notesHeading{
+    color: #333333;
+    font-size: 20px;
+}
+
+.notesSection{
+    margin-top: 20px;
+}
+
+.notesItem{
+    background-color: #d0ecf7;
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 8px;
 }

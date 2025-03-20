@@ -51,7 +51,7 @@ router.put('/editTodos/:id', async (req, res) => {
     const id = req.params.id
     const todoData = req.body
     try {
-      await client.query(`UPDATE todos SET title=$1,desciption=$2,priority=$3,tags=$4,notes=$5 WHERE id=$6`,[todoData.title, todoData.description, todoData.priority, todoData.tags, todoData.notes, id]);
+      await client.query(`UPDATE todos SET title=$1,desciption=$2,priority=$3,tags=$4,notes=$5,complete_status=$6 WHERE id=$7`,[todoData.title, todoData.description, todoData.priority, todoData.tags, todoData.notes,todoData.complete_status, id]);
       res.json("Successfully Updated Todo");
     } catch (error) {
       console.error("Error fetching users:", error);

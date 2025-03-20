@@ -37,7 +37,7 @@ function SideBar(props) {
             control={
               <Checkbox
                 sx={{ padding: "2px", height: "20px", width: "20px", marginRight: "15px" }}
-                icon={<RadioButtonUncheckedIcon sx={{ color: "#a79b9b" }} />}
+                icon={<RadioButtonUncheckedIcon sx={{ color: "#333333" }} />}
                 checkedIcon={<CheckCircleIcon sx={{ color: "#80b156" }} />}
                 value={element}
                 checked={props.selectedPriorities.includes(element)}
@@ -59,14 +59,15 @@ function SideBar(props) {
             disableRipple
             label={element.name}
             key={index}
-            onClick={() => handleTagChange(element.name)}
-            variant={props.selectedTags.includes(element.name) ? "filled" : "outlined"}
+            onClick={() => handleTagChange(element.name)}            
             sx={{
-              backgroundColor:props.selectedTags.includes(element.name) ? element.color : "#546E7A",
+              backgroundColor:'#01579b ',
+              border:props.selectedTags.includes(element.name) ? `1px solid ${element.color}` : "#546E7A",
               color:props.selectedTags.includes(element.name) ? 'white' : 'white',
               "&:hover": {
-                backgroundColor: props.selectedTags.includes(element.name) ? element.color : "#6b7f88 !important", // Slightly darker hover effect
-              } }}
+                backgroundColor: "#0277bd !important", // Slightly darker hover effect
+              }
+            }}
           />
         ))}
       </div>

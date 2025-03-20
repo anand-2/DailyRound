@@ -1,7 +1,9 @@
 .sideBar_main{
     padding: 20px;
-    background-color: #ffffff;
+    background-color: #d0ecf7;
+    color: #333333 !important;
     border-radius: 10px;
+    height: 387px;
 }
 
 .sideBar_heading {
@@ -10,7 +12,7 @@
 }
 
 .sideBar_subHeading {
-    color: #a79b9b;
+    color: #333333 !important;
     font-size: 15px;
     margin-bottom: 20px;
 }
@@ -20,17 +22,6 @@
     flex-direction: column;
     justify-content: center;
     gap: 10px;
-}
-
-.filled {
-    color: white;
-    border: 1px solid white;
- }
- 
-.outlined {
-    background-color: #a79b9b;
-    color: black;
-    border: 1px solid black;
 }
 
 .sideBar_tag_chip {
